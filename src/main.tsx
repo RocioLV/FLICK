@@ -2,9 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-// import Home from "./components/Home";
-// import MovieList from "./components/MovieList";
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./index.css";
 
 const router = createBrowserRouter([

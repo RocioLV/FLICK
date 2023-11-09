@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Movies from './components/Movies';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>  
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <Movies />
+    </div>
+  );
 }
 
-export default App
+export default App;
+
+
+
+// import flickLogo from "./assets/FLICKthis.gif";
+// import "./App.css";
+
+// function App() {
+//   return (
+//     <>
+//       <div>
+//         <a target="_blank">
+//           <img src={flickLogo} className="flickLogo" alt="Flick logo" />
+//         </a>
+//       </div>
+//       <h4 className="slogan">Toda la magia del cine a un clic de distancia</h4>
+//       <a className="btn" href="../components/Movies">
+//         <h2>¡Vamos! 🎯</h2>
+//       </a>
+//       <footer className="developed">Developed with ♥️ by Ro LV.</footer>
+//     </>
+//   );
+// }
+
+// export default App;
