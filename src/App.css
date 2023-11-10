@@ -1,11 +1,9 @@
-/* import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css'; */
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  justify-content: center;
 }
 .flickLogo {
   height: 20em;
@@ -23,3 +21,11 @@ footer {
   text-align: center;
   align-items: baseline;
 } 
+.pagination-container {
+  justify-content: center;
+  margin-top: 50px;
+  align-items: center;
+} 
+/* App.css */
+
+

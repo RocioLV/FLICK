@@ -1,3 +1,5 @@
+// Movies.tsx
+
 import React, { useEffect, useState } from 'react';
 import './Movies.css'; // Importa tu archivo CSS
 
@@ -8,21 +10,34 @@ interface Movie {
   release_date: string;
 }
 
-const Movies: React.FC = () => {
+interface MoviesProps {
+  page: number;
+}
+
+const Movies: React.FC<MoviesProps> = ({ page }) => {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [page, setPage] = useState(1); // Página actual
   const apiKey = 'cf0e1952324b9e21971b9172680a665f';
 
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}`)
-      .then((response) => response.json())
-      .then((data: { results: Movie[] }) => {
+    const fetchMovies = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}`
+        );
+
+        if (!response.ok) {
+          throw new Error('Error al obtener las películas');
+        }
+
+        const data = await response.json();
         setMovies(data.results);
-      })
-      .catch((error) => {
-        console.error('Error al obtener las películas', error);
-      });
-  }, [page]); // Escucha cambios en 'page'
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMovies();
+  }, [page]);
 
   return (
     <div className="movies-container">
@@ -36,12 +51,60 @@ const Movies: React.FC = () => {
           </div>
         ))}
       </div>
-      <button onClick={() => setPage(page + 1)}>Cargar más películas</button>
     </div>
   );
 };
 
 export default Movies;
+
+
+
+
+///////////FUNCIONA OK////////////////////////////////
+// import React, { useEffect, useState } from 'react';
+// import './Movies.css'; // Importa tu archivo CSS
+
+// interface Movie {
+//   id: number;
+//   poster_path: string;
+//   title: string;
+//   release_date: string;
+// }
+
+// const Movies: React.FC = () => {
+//   const [movies, setMovies] = useState<Movie[]>([]);
+//   const [page, setPage] = useState(1); // Página actual
+//   const apiKey = 'cf0e1952324b9e21971b9172680a665f';
+
+//   useEffect(() => {
+//     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}`)
+//       .then((response) => response.json())
+//       .then((data: { results: Movie[] }) => {
+//         setMovies(data.results);
+//       })
+//       .catch((error) => {
+//         console.error('Error al obtener las películas', error);
+//       });
+//   }, [page]); // Escucha cambios en 'page'
+
+//   return (
+//     <div className="movies-container">
+//       <h2>Lista de películas</h2>
+//       <div className="movie-grid">
+//         {movies.map((movie) => (
+//           <div key={movie.id} className="movie-item">
+//             <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title} />
+//             <p>{movie.title}</p>
+//             <p>Año de lanzamiento: {movie.release_date.split('-')[0]}</p>
+//           </div>
+//         ))}
+//       </div>
+//       <button onClick={() => setPage(page + 1)}>Cargar más películas</button>
+//     </div>
+//   );
+// };
+
+// export default Movies;
 
 
 

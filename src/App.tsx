@@ -1,16 +1,32 @@
-import Movies from './components/Movies';
+import React from 'react';
+// import Movies from './components/Movies';
+import PaginationComponent from './components/Pagination';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div>
-      <Movies />
+      {/* <Movies /> */}
+      <PaginationComponent />
     </div>
   );
-}
+};
 
 export default App;
 
 
+// import Movies from './components/Movies';
+// import PaginationComponent from './components/Pagination';
+
+// function App() {
+//   return (
+//     <div>
+//       <Movies />
+//       <PaginationComponent />
+//     </div>
+//   );
+// }
+
+// export default App;
 
 // import flickLogo from "./assets/FLICKthis.gif";
 // import "./App.css";
