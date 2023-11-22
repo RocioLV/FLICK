@@ -41,7 +41,6 @@ const Movies: React.FC<MoviesProps> = ({ page }) => {
 
   return (
     <div className="movies-container">
-      <h2>Lista de películas</h2>
       <div className="movie-grid">
         {movies.map((movie) => (
           <div key={movie.id} className="movie-item">

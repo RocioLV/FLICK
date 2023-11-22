@@ -1,24 +1,21 @@
 .movies-container {
   text-align: center;
+  padding: 20px;
 }
-
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr); 
   gap: 20px;
 }
-
 .movie-item {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
   background-color: #f9f9f9;
 }
-
 .movie-item img {
   max-width: 100%;
 }
-
 button {
   margin-top: 10px;
 }

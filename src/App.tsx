@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import Header from './components/Header';
+import NavigationBar from './components/NavigationBar';
 import Movies from './components/Movies';
+import Footer from './components/Footer';
 import PaginationComponent from './components/Pagination';
 
 const App: React.FC = () => {
@@ -14,13 +17,15 @@ const App: React.FC = () => {
 
   return (
     <div>
+      <Header />
+      <NavigationBar />
       <Movies page={currentPage} />
-
       <PaginationComponent
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
+      <Footer />
     </div>
   );
 };
