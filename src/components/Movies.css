@@ -4,7 +4,7 @@
 
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas por fila */
+  grid-template-columns: repeat(5, 1fr); 
   gap: 20px;
 }
 

@@ -1,5 +1,12 @@
 .pagination-container {
+  display: flex;
   justify-content: center;
-  margin-top: 50px;
   align-items: center;
-} 
+  margin-top: 50px;
+  padding: 20px 0;
+}
+
+/* Estilos específicos para el componente de paginación */
+.pagination-container .pagination {
+  margin: 0; /* Resetear márgenes por defecto de la paginación */
+}

@@ -1,17 +1,49 @@
-import React from 'react';
-// import Movies from './components/Movies';
+import React, { useState } from 'react';
+import Movies from './components/Movies';
 import PaginationComponent from './components/Pagination';
 
 const App: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalMovies = 1000; // Aquí deberías obtener el total de películas de tu fuente de datos
+  const moviesPerPage = 20; // Número de películas por página
+  const totalPages = Math.ceil(totalMovies / moviesPerPage);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div>
-      {/* <Movies /> */}
-      <PaginationComponent />
+      <Movies page={currentPage} />
+
+      <PaginationComponent
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
 
 export default App;
+
+
+
+// App.tsx
+
+// import React from 'react';
+// import Movies from './components/Movies'; 
+// import './components/Movies.css'; 
+
+// const App: React.FC = () => {
+//   return (
+//     <div>
+//       <Movies page={1} /> {/* Llama a Movies y pasa la página */}
+//     </div>
+//   );
+// };
+
+// export default App;
 
 
 // import Movies from './components/Movies';

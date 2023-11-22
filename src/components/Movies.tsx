@@ -1,43 +1,43 @@
 // Movies.tsx
 
 import React, { useEffect, useState } from 'react';
-import './Movies.css'; // Importa tu archivo CSS
+import './Movies.css';
 
-interface Movie {
+interface Movie { // describe la estructura de un objeto de película, tiene 4 propiedades
   id: number;
   poster_path: string;
   title: string;
   release_date: string;
 }
 
-interface MoviesProps {
+interface MoviesProps { // define la estructura de los props que se pueden pasar al componente Movies
   page: number;
 }
 
 const Movies: React.FC<MoviesProps> = ({ page }) => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([]); // crea un estado llamado "movies" que es un array de objetos de tipo "Movie".
+  // El estado se inicializa con un array vacío. La fx "setMovies" se utiliza para actualizar el valor del estado "movies".
   const apiKey = 'cf0e1952324b9e21971b9172680a665f';
 
-  useEffect(() => {
-    const fetchMovies = async () => {
+  useEffect(() => { // se utiliza para ejecutar efectos secundarios en componentes funcionales
+    const fetchMovies = async () => { // fx asíncrona para obtener las películas
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}`
+          `https://api.themoviedb.org/3/discover/movie?with_genres=Animation&api_key=${apiKey}&page=${page}`
+          // `https://api.themoviedb.org/3/discover/movie?with_genres=Animation&api_key=${apiKey}&page=${page}'
+          // `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}`
         );
-
-        if (!response.ok) {
+        if (!response.ok) { // verifica si la respuesta de la solicitud HTTP no es existosa
           throw new Error('Error al obtener las películas');
         }
-
-        const data = await response.json();
-        setMovies(data.results);
+        const data = await response.json(); // convertir los datos recibidos en la respuesta HTTP en formato JSON
+        setMovies(data.results); // actualizar el estado "movies" con los resultados obtenidos
       } catch (error) {
         console.error(error);
       }
     };
-
-    fetchMovies();
-  }, [page]);
+    fetchMovies(); // se ejecuta una vez cuando el componente se monta y cada vez que cambien los valores de page
+  }, [page]); // [page] se pasa como segundo argumento a useEffect(), (el efecto solo se ejecuta nuevamente si el valor cambia
 
   return (
     <div className="movies-container">
@@ -47,7 +47,7 @@ const Movies: React.FC<MoviesProps> = ({ page }) => {
           <div key={movie.id} className="movie-item">
             <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title} />
             <p>{movie.title}</p>
-            <p>Año de lanzamiento: {movie.release_date.split('-')[0]}</p>
+            <p>{movie.release_date.split('-')[0]}</p>
           </div>
         ))}
       </div>
@@ -56,8 +56,6 @@ const Movies: React.FC<MoviesProps> = ({ page }) => {
 };
 
 export default Movies;
-
-
 
 
 ///////////FUNCIONA OK////////////////////////////////

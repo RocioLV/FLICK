@@ -1,19 +1,15 @@
-// PaginationComponent.tsx
-
-import React, { useState } from 'react';
+import React from 'react';
 import Pagination from 'react-bootstrap/Pagination';
-import Movies from './Movies';
-// import './Pagination.css';
+import './Pagination.css';
 
-const PaginationComponent: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalMovies = 1000;
-  const totalPages = Math.ceil(totalMovies / 20);
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}
+
+const PaginationComponent: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
   const pagesToShow = 10;
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
 
   const getVisiblePages = () => {
     const lastPage = Math.min(currentPage + pagesToShow - 1, totalPages);
@@ -22,12 +18,10 @@ const PaginationComponent: React.FC = () => {
 
   return (
     <div className="pagination-container">
-      <Movies page={currentPage} />
-
       <Pagination>
-        <Pagination.First onClick={() => handlePageChange(1)} />
+        <Pagination.First onClick={() => onPageChange(1)} />
         <Pagination.Prev
-          onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+          onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
           disabled={currentPage === 1}
         />
 
@@ -35,23 +29,79 @@ const PaginationComponent: React.FC = () => {
           <Pagination.Item
             key={page}
             active={page === currentPage}
-            onClick={() => handlePageChange(page)}
+            onClick={() => onPageChange(page)}
           >
             {page}
           </Pagination.Item>
         ))}
 
         <Pagination.Next
-          onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
+          onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
           disabled={currentPage === totalPages}
         />
-        <Pagination.Last onClick={() => handlePageChange(totalPages)} />
+        <Pagination.Last onClick={() => onPageChange(totalPages)} />
       </Pagination>
     </div>
   );
 };
 
 export default PaginationComponent;
+
+
+
+
+// import React, { useState } from 'react';
+// import Pagination from 'react-bootstrap/Pagination';
+// import Movies from './Movies';
+// import './Pagination.css';
+
+// const PaginationComponent: React.FC = () => {
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const totalMovies = 1000;
+//   const totalPages = Math.ceil(totalMovies / 20);
+//   const pagesToShow = 10;
+
+//   const handlePageChange = (page: number) => {
+//     setCurrentPage(page);
+//   };
+
+//   const getVisiblePages = () => {
+//     const lastPage = Math.min(currentPage + pagesToShow - 1, totalPages);
+//     return Array.from({ length: pagesToShow }, (_, index) => lastPage - index).reverse();
+//   };
+
+//   return (
+//     <div className="pagination-container">
+//       <Movies page={currentPage} />
+
+//       <Pagination>
+//         <Pagination.First onClick={() => handlePageChange(1)} />
+//         <Pagination.Prev
+//           onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+//           disabled={currentPage === 1}
+//         />
+
+//         {getVisiblePages().map((page) => (
+//           <Pagination.Item
+//             key={page}
+//             active={page === currentPage}
+//             onClick={() => handlePageChange(page)}
+//           >
+//             {page}
+//           </Pagination.Item>
+//         ))}
+
+//         <Pagination.Next
+//           onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
+//           disabled={currentPage === totalPages}
+//         />
+//         <Pagination.Last onClick={() => handlePageChange(totalPages)} />
+//       </Pagination>
+//     </div>
+//   );
+// };
+
+// export default PaginationComponent;
 
 
 
