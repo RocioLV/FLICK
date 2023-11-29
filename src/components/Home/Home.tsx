@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import logo from "../assets/FLICKthis-unscreen.gif";
-import Footer from "./Footer";
+import logo from "../../assets/FLICKthis-unscreen.gif";
+import Footer from "../Footer/Footer";
 
 const Home: React.FC = () => {
   return (

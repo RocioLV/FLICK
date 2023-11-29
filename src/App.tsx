@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import Header from './components/Header';
-import NavigationBar from './components/NavigationBar';
-import Movies from './components/Movies';
-import Footer from './components/Footer';
-import PaginationComponent from './components/Pagination';
+import React, { useState } from "react";
+import Header from "./components/Header/Header";
+import NavigationBar from "./components/NavigationBar/NavigationBar";
+import Movies from "./components/Movies/Movies";
+import Footer from "./components/Footer/Footer";
+import PaginationComponent from "./components/Pagination/Pagination";
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,13 +32,11 @@ const App: React.FC = () => {
 
 export default App;
 
-
-
 // App.tsx
 
 // import React from 'react';
-// import Movies from './components/Movies'; 
-// import './components/Movies.css'; 
+// import Movies from './components/Movies';
+// import './components/Movies.css';
 
 // const App: React.FC = () => {
 //   return (
@@ -49,7 +47,6 @@ export default App;
 // };
 
 // export default App;
-
 
 // import Movies from './components/Movies';
 // import PaginationComponent from './components/Pagination';

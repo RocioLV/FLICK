@@ -1,29 +1,35 @@
 // NavigationBar.tsx
-import React from 'react';
+import React from "react";
 
 const NavigationBar: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">Filtros</a>
+        <a className="navbar-brand" href="#">
+          Filtrar por:{" "}
+        </a>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link" href="#">Item 1</a>
+              <a className="nav-link" href="#">
+                Género
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Item 2</a>
+              <a className="nav-link" href="#">
+                Año de lanzamiento
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Item 3</a>
+              <a className="nav-link" href="#">
+                Puntación
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Item 4</a>
+              <a className="nav-link" href="#">
+                Popularidad
+              </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Item 5</a>
-            </li>
-            {/* Agregar más elementos según sea necesario */}
           </ul>
         </div>
       </div>
@@ -33,7 +39,50 @@ const NavigationBar: React.FC = () => {
 
 export default NavigationBar;
 
+/////REVISARRRR/////
 
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import DropdownButton from 'react-bootstrap/DropdownButton';
+
+// function ButtonDarkExample() {
+//   return (
+//     <>
+//       <Dropdown data-bs-theme="dark">
+//         <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+//           Dropdown Button
+//         </Dropdown.Toggle>
+
+//         <Dropdown.Menu>
+//           <Dropdown.Item href="#/action-1" active>
+//             Action
+//           </Dropdown.Item>
+//           <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+//           <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+//           <Dropdown.Divider />
+//           <Dropdown.Item href="#/action-4">Separated link</Dropdown.Item>
+//         </Dropdown.Menu>
+//       </Dropdown>
+
+//       <DropdownButton
+//         id="dropdown-button-dark-example2"
+//         variant="secondary"
+//         title="Dropdown button"
+//         className="mt-2"
+//         data-bs-theme="dark"
+//       >
+//         <Dropdown.Item href="#/action-1" active>
+//           Action
+//         </Dropdown.Item>
+//         <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+//         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+//         <Dropdown.Divider />
+//         <Dropdown.Item href="#/action-4">Separated link</Dropdown.Item>
+//       </DropdownButton>
+//     </>
+//   );
+// }
+
+// export default ButtonDarkExample;
 
 // // NavigationBar.tsx
 // import React from 'react';
