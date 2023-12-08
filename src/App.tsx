@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Header from "./components/Header/Header";
-import NavigationBar from "./components/NavigationBar/NavigationBar";
+import Header from "./components/Home/Header";
+import NavigationBar from "./components/Movies/NavigationBar";
 import Movies from "./components/Movies/Movies";
-import Footer from "./components/Footer/Footer";
-import PaginationComponent from "./components/Pagination/Pagination";
+import Footer from "./components/Home/Footer";
+import PaginationComponent from "./components/Movies/Pagination";
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
