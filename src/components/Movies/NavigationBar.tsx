@@ -6,28 +6,28 @@ const NavigationBar: React.FC = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
-          Filtrar por:{" "}
+          Order by:{" "}
         </a>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Género
+                Popularity
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Año de lanzamiento
+                Release date
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Puntación
+                Vote average
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Popularidad
+                Revenue
               </a>
             </li>
           </ul>

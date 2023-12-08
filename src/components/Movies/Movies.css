@@ -1,3 +1,4 @@
+/* Movies */
 .movies-container {
   text-align: center;
   padding: 20px;
@@ -18,4 +19,20 @@
 }
 button {
   margin-top: 10px;
+}
+
+/* Navigation Bar */
+
+/* Pagination */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  padding: 20px 0;
+}
+
+/* Estilos específicos para el componente de paginación */
+.pagination-container .pagination {
+  margin: 0; /* Resetear márgenes por defecto de la paginación */
 }
