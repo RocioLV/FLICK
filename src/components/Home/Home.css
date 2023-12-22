@@ -39,7 +39,7 @@
   padding: 20px 0;
 }
 .footer-text {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 /* Header.css */
@@ -53,7 +53,7 @@
 }
 .search-icon {
   color: rgb(0, 0, 0);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -72,11 +72,20 @@
   border: none;
   background-color: transparent;
   color: white;
-  font-size: 1rem;
-  width: 0; /* Empieza oculto */
-  transition: width 0.3s ease; /* Animación de expansión */
+  font-size: 1.2rem;
+  margin-right: 50px;
+  width: 150px; /* Empieza oculto */
+  /* transition: width 0.3s ease; Animación de expansión */
 }
-/* Animación para mostrar el input al hacer hover */
+/* Animación para mostrar el input al hacer hover 
 .search-container:hover .search-input {
-  width: 150px; /* Ancho aumentado al hacer hover */
+  width: 150px; /* Ancho aumentado al hacer hover 
+}*/
+.menu-item {
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+  margin-right: 50px;
+  cursor: pointer;
+  display: flex;
+  font-style: none;
 }

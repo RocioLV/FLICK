@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useState } from 'react';
 
+// Props que utilizará el sort: la función que maneja el estado y cambia el valor del sort
 interface sortByProps {
   onChangeSortBy: (sortBy: string) => void;
 }
 
-const SortBy: React.FC<sortByProps> = ({ onChangeSortBy }) => {
-  const [sortByValue, setSortByValue] = useState('popularity.desc');
+const SortBy: React.FC<sortByProps> = ({ onChangeSortBy }) => { // Renderiza selector de opciones
+  const [sortByValue, setSortByValue] = useState('popularity.desc'); // valor inicial
+  //  El valor seleccionado se almacena en el estado sortByValue y se actualiza mediante la función setSortByValue
 
   const handleSortByChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedValue = event.target.value;
+    const selectedValue = event.target.value; //Toma el valor del option seleccionado
     setSortByValue(selectedValue);
     onChangeSortBy(selectedValue);
+    //  Cuando cambia la selección, se llama a la fx onChangeSortBy pasando el nuevo valor seleccionado como argumento
 }
 
 return (

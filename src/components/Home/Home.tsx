@@ -1,22 +1,47 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import "../../styles/App.css";
 import "./Home.css";
-import logo from "../../assets/FLICKthis-unscreen.gif";
-import Footer from "./Footer";
+import "../Header/header.css";
+import Header from "./Header.tsx";
+import Movies from "../Movies/Movies.tsx";
+import posterHome from "../../assets/poster-home.png";
+import { useFilterSort } from "../Movies/FilterSortContext.tsx";
 
 const Home: React.FC = () => {
+  // Extraemos las propiedades del hook useFilterSort.
+  const { filterByValue, setFilterByValue, sortByValue, setSortByValue } =
+    useFilterSort();
+
+  //Función para cambiar el estado, toma el selectedFilterValue y actualiza el filterByValue
+  const onChangeFilterBy = (selectedFilterValue: string) => {
+    setFilterByValue(selectedFilterValue);
+  };
+  //Función para cambiar el estado, toma el selectedSortValue y actualiza el sortByValue
+  const onChangeSortBy = (selectedValue: string) => {
+    setSortByValue(selectedValue);
+  };
+
   return (
     <>
-      <div className="home-container">
-        <img src={logo} alt="FLICKthis" className="logo" />
-        <h2 className="slogan">
-          The best animations are just a click away!
-        </h2>
-        <Link to="/movies" className="btn-enter">
-          Watch all animations
-        </Link>
-      </div>
-      <Footer />
+      <section>
+        <Header
+          onChangeFilterBy={onChangeFilterBy}
+          onChangeSortBy={onChangeSortBy}
+        />
+      </section>
+
+      <section className="poster-container">
+        <img src={posterHome} className="posterHome" alt="poster" />
+        <section className="title-container">
+          <h1 className="poster-title">
+            Uncover Reality, One Film at a Time...
+          </h1>
+        </section>
+      </section>
+
+      <section>
+        <Movies filterByValue={filterByValue} sortByValue={sortByValue} />
+      </section>
     </>
   );
 };

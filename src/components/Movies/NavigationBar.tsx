@@ -1,5 +1,6 @@
 // NavigationBar.tsx
 import React from "react";
+import SortBy from "./SortBy";
 
 const NavigationBar: React.FC = () => {
   return (
@@ -8,6 +9,7 @@ const NavigationBar: React.FC = () => {
         <a className="navbar-brand" href="#">
           Order by:{" "}
         </a>
+        <SortBy />
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">

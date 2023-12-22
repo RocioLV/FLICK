@@ -4,18 +4,29 @@ import NavigationBar from "./components/Movies/NavigationBar";
 import Movies from "./components/Movies/Movies";
 import Footer from "./components/Home/Footer";
 import PaginationComponent from "./components/Movies/Pagination";
+import SortBy from "./components/Movies/SortBy";
+
+// componente App que renderiza una página web con una estructura básica.
+// utiliza el estado del hook useState para almacenar la página web actual 
+// y la función setCurrentPage para actualizarla.
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalMovies = 1000; // Aquí deberías obtener el total de películas de tu fuente de datos
+  const [currentPage, setCurrentPage] = useState(1); // estado de la página actual, inicia en 1.
+  // currentPage es una variable que almacena el número de la página actual en la aplicación.
+  // setCurrentPage es una función que actualiza el estado de la página actual en la aplicación.
+  const totalMovies = 1000; // total de películas de tu fuente de datos
   const moviesPerPage = 20; // Número de películas por página
   const totalPages = Math.ceil(totalMovies / moviesPerPage);
+  // pasa la página actual a los componentes "Movies" y "PaginationComponent" como propiedades
 
   const handlePageChange = (page: number) => {
+    // fx flecha que recibe el parámetro page de tipo número.
+    // se utiliza para actualizar el estado de la página actual mediante la llamada a la fx "setCurrentePage"
     setCurrentPage(page);
   };
 
   return (
+    // finalmente renderiza los componentes "Header", "NavigationBar", "Movies", "PaginationComponent" y "Footer."
     <div>
       <Header />
       <NavigationBar />
@@ -31,55 +42,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
-// App.tsx
-
-// import React from 'react';
-// import Movies from './components/Movies';
-// import './components/Movies.css';
-
-// const App: React.FC = () => {
-//   return (
-//     <div>
-//       <Movies page={1} /> {/* Llama a Movies y pasa la página */}
-//     </div>
-//   );
-// };
-
-// export default App;
-
-// import Movies from './components/Movies';
-// import PaginationComponent from './components/Pagination';
-
-// function App() {
-//   return (
-//     <div>
-//       <Movies />
-//       <PaginationComponent />
-//     </div>
-//   );
-// }
-
-// export default App;
-
-// import flickLogo from "./assets/FLICKthis.gif";
-// import "./App.css";
-
-// function App() {
-//   return (
-//     <>
-//       <div>
-//         <a target="_blank">
-//           <img src={flickLogo} className="flickLogo" alt="Flick logo" />
-//         </a>
-//       </div>
-//       <h4 className="slogan">Toda la magia del cine a un clic de distancia</h4>
-//       <a className="btn" href="../components/Movies">
-//         <h2>¡Vamos! 🎯</h2>
-//       </a>
-//       <footer className="developed">Developed with ♥️ by Ro LV.</footer>
-//     </>
-//   );
-// }
-
-// export default App;
