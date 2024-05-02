@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 // Props que utilizará el sort: la función que maneja el estado y cambia el valor del sort
 interface sortByProps {
-  onChangeSortBy: (sortBy: string) => void;
+  onChangeSortBy: (sortBy: string) => void; // Fx que toma un argumento de tipo string y no devuelve nada
 }
 
 const SortBy: React.FC<sortByProps> = ({ onChangeSortBy }) => { // Renderiza selector de opciones
