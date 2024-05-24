@@ -2,11 +2,13 @@
 .movies-container {
   text-align: center;
   padding: 20px;
+  background-color: #333;
 }
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr); 
   gap: 20px;
+  background-color: #333;
 }
 .movie-item {
   border: 1px solid #ddd;
@@ -30,6 +32,7 @@ button {
   align-items: center;
   margin-top: 50px;
   padding: 20px 0;
+  background-color: #333;
 }
 
 /* Estilos específicos para el componente de paginación */
