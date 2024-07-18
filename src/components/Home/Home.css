@@ -1,3 +1,4 @@
+/* Home.css */
 .home-container {
   display: flex;
   flex-direction: column;
@@ -17,7 +18,7 @@
   margin-left: 50px;
 }
 .btn-enter {
-  width: 400px;
+  width: 200px;
   padding: 10px 20px;
   background-color: black;
   color: #fff;
@@ -28,4 +29,63 @@
 }
 .btn-enter:hover {
   background-color: #ed3833;
+}
+
+/* Footer.css */
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+.footer-text {
+  font-size: 14px;
+}
+
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+.search-icon {
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.logo {
+  width: 300px; /* Ajusta el tamaño según corresponda */
+}
+.logo-h {
+  width: 150px;
+  margin-left: 50px;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+}
+.search-input {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 1.2rem;
+  margin-right: 50px;
+  width: 150px; /* Empieza oculto */
+  /* transition: width 0.3s ease; Animación de expansión */
+}
+/* Animación para mostrar el input al hacer hover 
+.search-container:hover .search-input {
+  width: 150px; /* Ancho aumentado al hacer hover 
+}*/
+.menu-item {
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+  margin-right: 50px;
+  cursor: pointer;
+  display: flex;
+  font-style: none;
 }

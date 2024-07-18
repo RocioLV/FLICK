@@ -1,14 +1,23 @@
 import React, { useState } from "react";
-import Header from "./components/Header/Header";
-import NavigationBar from "./components/NavigationBar/NavigationBar";
+import Header from "./components/Home/Header";
+import NavigationBar from "./components/Movies/NavigationBar";
 import Movies from "./components/Movies/Movies";
-import Footer from "./components/Footer/Footer";
-import PaginationComponent from "./components/Pagination/Pagination";
+import Footer from "./components/Home/Footer";
+import PaginationComponent from "./components/Movies/Pagination";
+// import { FilterSortProvider } from "./components/Movies/FilterSortContext";
+
+// componente App que renderiza una página web con una estructura básica.
+// utiliza el estado del hook useState para almacenar la página web actual 
+// y la función setCurrentPage para actualizarla.
+
+// ... imports y otras configuraciones
+
+import { FilterSortProvider } from "./components/Movies/FilterSortContext";
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalMovies = 1000; // Aquí deberías obtener el total de películas de tu fuente de datos
-  const moviesPerPage = 20; // Número de películas por página
+  const totalMovies = 1000;
+  const moviesPerPage = 20;
   const totalPages = Math.ceil(totalMovies / moviesPerPage);
 
   const handlePageChange = (page: number) => {
@@ -16,70 +25,54 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
-      <Header />
-      <NavigationBar />
-      <Movies page={currentPage} />
-      <PaginationComponent
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
-      <Footer />
-    </div>
+    <FilterSortProvider>
+      <div>
+        <Header />
+        <NavigationBar />
+        <Movies page={currentPage} />
+        <PaginationComponent
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+        <Footer />
+      </div>
+    </FilterSortProvider>
   );
 };
 
 export default App;
 
-// App.tsx
-
-// import React from 'react';
-// import Movies from './components/Movies';
-// import './components/Movies.css';
 
 // const App: React.FC = () => {
+//   const [currentPage, setCurrentPage] = useState(1); // estado de la página actual, inicia en 1.
+//   // currentPage es una variable que almacena el número de la página actual en la aplicación.
+//   // setCurrentPage es una función que actualiza el estado de la página actual en la aplicación.
+//   const totalMovies = 1000; // total de películas de tu fuente de datos
+//   const moviesPerPage = 20; // Número de películas por página
+//   const totalPages = Math.ceil(totalMovies / moviesPerPage);
+//   // pasa la página actual a los componentes "Movies" y "PaginationComponent" como propiedades
+
+//   const handlePageChange = (page: number) => {
+//     // fx flecha que recibe el parámetro page de tipo número.
+//     // se utiliza para actualizar el estado de la página actual mediante la llamada a la fx "setCurrentePage"
+//     setCurrentPage(page);
+//   };
+
 //   return (
 //     <div>
-//       <Movies page={1} /> {/* Llama a Movies y pasa la página */}
+//       <Header />
+//       {/* <FilterSortProvider /> */}
+//       <NavigationBar />
+//       <Movies page={currentPage} />
+//       <PaginationComponent
+//         currentPage={currentPage}
+//         totalPages={totalPages}
+//         onPageChange={handlePageChange}
+//       />
+//       <Footer />
 //     </div>
 //   );
 // };
-
-// export default App;
-
-// import Movies from './components/Movies';
-// import PaginationComponent from './components/Pagination';
-
-// function App() {
-//   return (
-//     <div>
-//       <Movies />
-//       <PaginationComponent />
-//     </div>
-//   );
-// }
-
-// export default App;
-
-// import flickLogo from "./assets/FLICKthis.gif";
-// import "./App.css";
-
-// function App() {
-//   return (
-//     <>
-//       <div>
-//         <a target="_blank">
-//           <img src={flickLogo} className="flickLogo" alt="Flick logo" />
-//         </a>
-//       </div>
-//       <h4 className="slogan">Toda la magia del cine a un clic de distancia</h4>
-//       <a className="btn" href="../components/Movies">
-//         <h2>¡Vamos! 🎯</h2>
-//       </a>
-//       <footer className="developed">Developed with ♥️ by Ro LV.</footer>
-//     </>
-//   );
-// }
 
 // export default App;

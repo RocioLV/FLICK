@@ -1,6 +1,6 @@
 import React from 'react';
 import Pagination from 'react-bootstrap/Pagination';
-import './Pagination.css';
+import './Movies.css';
 
 interface PaginationProps {
   currentPage: number;
