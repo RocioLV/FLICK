@@ -25,17 +25,17 @@ export const FilterSortProvider: React.FC<FilterSortProviderProps> = ({ children
   const [filterByValue, setFilterByValue] = useState<string>('');
   const [sortByValue, setSortByValue] = useState<string>('popularity.desc');
 
-  const handleFilterChange = (selectedFilter: string) => {
-    setFilterByValue(selectedFilter);
-  };
+  // const handleFilterChange = (selectedFilter: string) => {
+  //   setFilterByValue(selectedFilter);
+  // };
 
-  const handleSortChange = (selectedSort: string) => {
-    if (selectedSort === sortByValue) {
-      setSortByValue(`${sortByValue}.desc`);
-    } else {
-      setSortByValue(selectedSort);
-    }
-  };
+  // const handleSortChange = (selectedSort: string) => {
+  //   if (selectedSort === sortByValue) {
+  //     setSortByValue(`${sortByValue}.desc`);
+  //   } else {
+  //     setSortByValue(selectedSort);
+  //   }
+  // };
 
   return (
     <FilterSortContext.Provider value={{ filterByValue, setFilterByValue, sortByValue, setSortByValue }}>

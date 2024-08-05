@@ -10,10 +10,10 @@ const Home: React.FC = () => {
       <div className="home-container">
         <img src={logo} alt="FLICKthis" className="logo" />
         <h2 className="slogan">
-          The best animations are just a click away!
+          The best movies are just a click away!
         </h2>
         <Link to="/movies" className="btn-enter">
-          Watch all animations
+          Watch all movies
         </Link>
       </div>
       <Footer />

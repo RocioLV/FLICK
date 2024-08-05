@@ -1,43 +1,67 @@
-// // Movies.tsx
-
+// Importamos React y los hooks useEffect y useState
 import React, { useEffect, useState } from 'react';
+
+// Importamos el archivo CSS para estilizar el componente
 import './Movies.css';
+
+// Importamos el contexto useFilterSort para obtener los valores de filtrado y ordenamiento
 import { useFilterSort } from './FilterSortContext';
 
-interface Movie {
-  id: number;
-  poster_path: string;
-  title: string;
-  release_date: string;
+// Definimos la interfaz Movie que representa una película
+interface Movie { 
+  id: number; // Identificador de la película
+  poster_path: string; // Ruta del póster de la película
+  title: string; // Título de la película
+  release_date: string; // Fecha de lanzamiento de la película
 }
 
+// Definimos la interfaz MoviesProps que representa las propiedades del componente
 interface MoviesProps {
-  page: number;
+  page: number; // Página actual
 }
 
+// Definimos el componente funcional Movies que recibe una propiedad page
 const Movies: React.FC<MoviesProps> = ({ page }) => {
+  // Creamos un estado local movies que es un arreglo vacío de películas
   const [movies, setMovies] = useState<Movie[]>([]);
-  const { filterByValue, sortByValue } = useFilterSort(); // Obtener valores de filtrado y ordenamiento del contexto
+
+  // Obtenemos los valores de filtrado y ordenamiento del contexto useFilterSort
+  const { filterByValue, sortByValue } = useFilterSort();
+
+  // Definimos la clave de API para acceder a la API de The Movie Database
   const apiKey = 'cf0e1952324b9e21971b9172680a665f';
 
+  // Utilizamos el hook useEffect para ejecutar un efecto secundario cuando el componente se renderiza
   useEffect(() => {
+    // Definimos una función asíncrona fetchMovies que se encarga de obtener las películas de la API
     const fetchMovies = async () => {
       try {
+        // Hacemos una solicitud GET a la API de The Movie Database
         const response = await fetch(
           `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}&${filterByValue}&sort_by=${sortByValue}`
         );
+
+        // Verificamos si la respuesta es exitosa
         if (!response.ok) {
           throw new Error('Error al obtener las películas');
         }
+
+        // Parseamos la respuesta en un objeto JSON
         const data = await response.json();
+
+        // Actualizamos el estado movies con los resultados obtenidos de la API
         setMovies(data.results);
       } catch (error) {
+        // Manejamos errores que puedan ocurrir al obtener las películas de la API
         console.error(error);
       }
     };
-    fetchMovies();
-  }, [page, filterByValue, sortByValue]); // Escucha cambios en page, filterByValue y sortByValue
 
+    // Ejecutamos la función fetchMovies
+    fetchMovies();
+  }, [page, filterByValue, sortByValue]); // Escuchamos cambios en page, filterByValue y sortByValue
+
+  // Devolvemos el JSX que se renderiza en el componente
   return (
     <div className="movies-container">
       <div className="movie-grid">
@@ -53,147 +77,5 @@ const Movies: React.FC<MoviesProps> = ({ page }) => {
   );
 };
 
+// Exportamos el componente Movies por defecto
 export default Movies;
-
-
-// import React, { useEffect, useState } from 'react';
-// import './Movies.css';
-
-// interface Movie { // describe la estructura de un objeto de película, tiene 4 propiedades
-//   id: number;
-//   poster_path: string;
-//   title: string;
-//   release_date: string;
-// }
-
-// interface MoviesProps { // define la estructura de los props que se pueden pasar al componente Movies
-//   page: number;
-// }
-
-// const Movies: React.FC<MoviesProps> = ({ page }) => {
-//   const [movies, setMovies] = useState<Movie[]>([]); // crea un estado llamado "movies" que es un array de objetos de tipo "Movie".
-//   // El estado se inicializa con un array vacío. La fx "setMovies" se utiliza para actualizar el valor del estado "movies".
-//   const apiKey = 'cf0e1952324b9e21971b9172680a665f';
-
-//   useEffect(() => { // se utiliza para ejecutar efectos secundarios en componentes funcionales
-//     const fetchMovies = async () => { // fx asíncrona para obtener las películas
-//       try {
-//         const response = await fetch(
-//           `https://api.themoviedb.org/3/discover/movie?with_genres=Animation&api_key=${apiKey}&page=${page}`
-//           // `https://api.themoviedb.org/3/discover/movie?with_genres=Animation&api_key=${apiKey}&page=${page}'
-//           // `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}`
-//         );
-//         if (!response.ok) { // verifica si la respuesta de la solicitud HTTP no es existosa
-//           throw new Error('Error al obtener las películas');
-//         }
-//         const data = await response.json(); // convertir los datos recibidos en la respuesta HTTP en formato JSON
-//         setMovies(data.results); // actualizar el estado "movies" con los resultados obtenidos
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     };
-//     fetchMovies(); // se ejecuta una vez cuando el componente se monta y cada vez que cambien los valores de page
-//   }, [page]); // [page] se pasa como segundo argumento a useEffect(), (el efecto solo se ejecuta nuevamente si el valor cambia
-
-//   return (
-//     <div className="movies-container">
-//       <div className="movie-grid">
-//         {movies.map((movie) => (
-//           <div key={movie.id} className="movie-item">
-//             <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title} />
-//             <p>{movie.title}</p>
-//             <p>{movie.release_date.split('-')[0]}</p>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Movies;
-
-
-// ///////////FUNCIONA OK////////////////////////////////
-// // import React, { useEffect, useState } from 'react';
-// // import './Movies.css'; // Importa tu archivo CSS
-
-// // interface Movie {
-// //   id: number;
-// //   poster_path: string;
-// //   title: string;
-// //   release_date: string;
-// // }
-
-// // const Movies: React.FC = () => {
-// //   const [movies, setMovies] = useState<Movie[]>([]);
-// //   const [page, setPage] = useState(1); // Página actual
-// //   const apiKey = 'cf0e1952324b9e21971b9172680a665f';
-
-// //   useEffect(() => {
-// //     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}`)
-// //       .then((response) => response.json())
-// //       .then((data: { results: Movie[] }) => {
-// //         setMovies(data.results);
-// //       })
-// //       .catch((error) => {
-// //         console.error('Error al obtener las películas', error);
-// //       });
-// //   }, [page]); // Escucha cambios en 'page'
-
-// //   return (
-// //     <div className="movies-container">
-// //       <h2>Lista de películas</h2>
-// //       <div className="movie-grid">
-// //         {movies.map((movie) => (
-// //           <div key={movie.id} className="movie-item">
-// //             <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title} />
-// //             <p>{movie.title}</p>
-// //             <p>Año de lanzamiento: {movie.release_date.split('-')[0]}</p>
-// //           </div>
-// //         ))}
-// //       </div>
-// //       <button onClick={() => setPage(page + 1)}>Cargar más películas</button>
-// //     </div>
-// //   );
-// // };
-
-// // export default Movies;
-
-
-
-
-// // import React, { useEffect, useState } from 'react';
-
-// // const Movies: React.FC = () => {
-// //   const [movies, setMovies] = useState([]);
-// //   const apiKey = 'cf0e1952324b9e21971b9172680a665f'; 
-
-// //   useEffect(() => {
-// //     // fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2&primary_release_date.gte=1970-01-01&primary_release_date.lte=1990-12-3`)
-// //     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}`)
-// //       .then((response) => response.json())
-// //       .then((data) => {
-// //         setMovies(data.results);
-// //       })
-// //       .catch((error) => {
-// //         console.error('Error al obtener las películas', error);
-// //       });
-// //   }, []);
-
-// //   return (
-// //     <div>
-// //       <h1>Lista de películas</h1>
-// //       <ul>
-// //         {movies.map((movie) => (
-// //           <li key={movie.id}>
-// //             <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title} />
-// //             <p>{movie.title}</p>
-// //             <p>Año de lanzamiento: {movie.release_date.split('-')[0]}</p>
-// //           </li>
-// //         ))}
-// //       </ul>
-// //     </div>
-// //   );
-// // };
-
-// // export default Movies;
