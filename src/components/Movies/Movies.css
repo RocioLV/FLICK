@@ -1,8 +1,17 @@
-/* Movies */
+:root {
+  --primary-bg-color: #333;
+  --hover-bg-color: #444;
+  --text-color: #fff;
+  --gap-size: 5px;
+  --transition-duration: 0.3s;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor y Grid */
 .movies-container {
   text-align: center;
   padding: 20px;
-  background-color: #333;
+  background-color: var(--primary-bg-color);
   display: flex;
   flex-wrap: wrap;
   justify-content: center; /* Centra las películas en el contenedor */
@@ -10,22 +19,32 @@
 
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); 
-  gap: 10px;
-  background-color: #333;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--gap-size);
+  background-color: var(--primary-bg-color);
 }
 
+/* Estilo de los Items de Películas */
 .movie-item {
-  border: 1px solid #333;
-  padding: 10px;
+  border: 1px solid var(--primary-bg-color);
+  padding: 5px;
   text-align: center;
-  background-color: #333;
-  color: #fff; /* Cambia el color del texto a blanco */
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  transition: transform var(--transition-duration) ease, background-color var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
 }
 
 .movie-item img {
   max-width: 100%;
   margin-bottom: 20px;
+  transition: transform var(--transition-duration) ease;
+  loading: lazy; /* Lazy loading */
+}
+
+.movie-item:hover {
+  background-color: var(--hover-bg-color);
+  box-shadow: var(--box-shadow);
+  transform: translateY(-10px) scale(1.05); /* Efecto de hover */
 }
 
 button {
@@ -57,16 +76,14 @@ button {
   }
 }
 
-/* Navigation Bar */
-
 /* Pagination */
 .pagination-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 20px;
   padding: 20px 0;
-  background-color: #333;
+  background-color: var(--primary-bg-color);
 }
 
 /* Estilos específicos para el componente de paginación */
