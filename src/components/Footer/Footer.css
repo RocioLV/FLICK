@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+  
+  .logoImg{
+      width: 20px;
+      height: 20px;
+  }
+  
+  .centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: grid; /* Centrar verticalmente */
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }

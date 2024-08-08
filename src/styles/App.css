@@ -1,0 +1,11 @@
+#root {
+  text-align: center;
+  background-image: url('../assets/background4.png');
+  background-size: cover; /* Cubre completamente la pantalla */
+}
+.flickLogo {
+  height: 20em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}

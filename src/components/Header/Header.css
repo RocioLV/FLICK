@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  position: fixed;
+  z-index: 100;
+}
+.search-icon {
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.logo {
+  width: 300px; /* Ajusta el tamaño según corresponda */
+}
+.logo-h {
+  width: 150px;
+  margin-left: 50px;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+}
+.search-input {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 1.2rem;
+  margin-right: 50px;
+  width: 150px; /* Empieza oculto */
+}
+.menu-item {
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+  margin-right: 50px;
+  cursor: pointer;
+  display: flex;
+  font-style: none;
+}
+.arrowImage {
+  width: 0.7em;
+  height: 0.7em;
+}
+.date-filter {
+  background: none;
+  color: white;
+  border: none;
+  margin-left: 60px;
+  font-size: 20px;
+  cursor: pointer;
+}
+  .date-filter:hover {
+    filter: drop-shadow(0 0 2em #C72C41);
+  }
+  .sort-by {
+    background: transparent;
+    font-weight: bold;
+    color: white;
+    border: none;
+    margin-left: 60px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    font-family:'Montserrat';
+  }
+  .sort-by:hover {
+    filter: drop-shadow(0 0 2em #C72C41);
+  }
+
+/* Estilos para pantallas más pequeñas (max-width: 1000px) */
+@media screen and (max-width: 1000px) {
+  .header {
+    height: 60px; /* Altura reducida en pantallas pequeñas */
+    justify-content: space-between; /* Distribución de elementos a ambos lados del header */
+    padding-left: 10px;
+  }
+
+  .logo {
+    height: 3.3em; /* Reducir el tamaño del logo para pantallas pequeñas */
+  }
+
+  .date-filter {
+    margin-left: 10px; /* Reducir el margen izquierdo */
+    font-size: 10px; /* Reducir el tamaño de fuente */
+  }
+
+  .sort-by {
+    margin-left: 10px; /* Reducir el margen izquierdo */
+    font-size: 10px; /* Reducir el tamaño de fuente */
+  }
+}

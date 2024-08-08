@@ -1,0 +1,253 @@
+:root {
+  --primary-bg-color: #333;
+  --hover-bg-color: #444;
+  --text-color: #fff;
+  --gap-size: 5px;
+  --transition-duration: 0.3s;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor y Grid */
+.movies-container {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--primary-bg-color);
+  /* display: flex;
+  flex-wrap: wrap; */
+  justify-content: center; /* Centra las películas en el contenedor */
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--gap-size);
+  background-color: var(--primary-bg-color);
+}
+
+/* Estilo de los Items de Películas */
+.movie-item {
+  border: 1px solid var(--primary-bg-color);
+  padding: 5px;
+  /* text-align: center;
+  background-color: var(--primary-bg-color); */
+  color: var(--text-color);
+  /* transition: transform var(--transition-duration) ease, background-color var(--transition-duration) ease, box-shadow var(--transition-duration) ease; */
+}
+
+.movie-item img {
+  max-width: 100%;
+  margin-bottom: 15px;
+  /* transition: transform var(--transition-duration) ease; */
+}
+
+.movie-item:hover {
+  background-color: var(--hover-bg-color);
+  box-shadow: var(--box-shadow);
+  transform: translateY(-10px) scale(1.05); /* Efecto de hover */
+}
+
+button {
+  margin-top: 10px;
+}
+
+/* Responsividad */
+@media (max-width: 1200px) {
+  .movie-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 películas por fila en pantallas medianas */
+  }
+}
+
+@media (max-width: 900px) {
+  .movie-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 películas por fila en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 películas por fila en pantallas muy pequeñas */
+  }
+}
+
+@media (max-width: 400px) {
+  .movie-grid {
+    grid-template-columns: 1fr; /* 1 película por fila en pantallas muy pequeñas */
+  }
+}
+
+/* Pagination */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px 0;
+  background-color: var(--primary-bg-color);
+}
+
+/* Estilos específicos para el componente de paginación */
+.pagination-container .pagination {
+  margin: 0; /* Resetear márgenes por defecto de la paginación */
+}
+
+
+
+
+
+
+
+.logo-container {
+  margin-left: 40px;
+  }
+  .container {
+      background-color: #200C20;
+      padding: 70px;
+      display: flex;
+      justify-content: space-between;
+      margin: 60px;
+      border-radius: 2%;
+      box-shadow: 0 2px 4px rgba(219, 208, 208, 0.395);
+  }
+  
+  .back-section {
+      margin-top: 40px;
+      padding: 20px;
+  }
+  
+  .previous-arrow {
+      width: 1em;
+      height: 1em;
+      margin: 0px 20px;
+      background: none;
+  }
+  
+  .back {
+      text-decoration: none;
+      color: white;
+      font-size: 25px;
+  }
+  
+  .card {
+      width: 60%;
+      margin: 0px;
+      
+  }
+  
+  .movie-title-detail {
+  font-size: 50px;
+  margin: auto;
+  
+  
+  
+  }
+  
+  .inner-card {
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 60px;
+  
+  }
+  
+  .score {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0px;
+      background-color: #EE4540;
+      width: 55px;
+      height:55px;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(199, 122, 122, 0.395);
+  
+  }
+  
+  .date-detail {
+  
+      margin-left: 20px;
+  }
+  
+  .movie-poster {
+      width: 280px;
+      height: 410px;
+      border-radius: 2%;
+      box-shadow: 0 2px 4px rgba(219, 208, 208, 0.395);
+  }
+  
+  .overview {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.5; 
+  }
+  
+  
+  /* Estilos para dispositivos móviles (ancho de pantalla <= 1000px) */
+  @media screen and (max-width: 1000px) {
+      .logo-container {
+        margin: 0;
+        display: flex;
+        justify-content: center; /* Centra el contenido horizontalmente */
+        align-items: center; /* Centra el contenido verticalmente */
+      }
+    
+      .container {
+        padding: 20px; /* Reduce el relleno para dispositivos móviles */
+        margin: 0;
+      }
+    
+      .back-section {
+        margin: 0; /* Elimina el margen superior para dispositivos móviles */
+      }
+    
+      .previous-arrow {
+        margin: 0; /* Elimina el margen para dispositivos móviles */
+      }
+    
+      .back {
+        font-size: 12px; /* Reduce el tamaño del texto para dispositivos móviles */
+      }
+    
+      .card {
+        width: 100%; /* Ocupa el ancho completo del contenedor padre */
+      }
+    
+      .movie-title-detail {
+        font-size: 25px; /* Reduce el tamaño del título para dispositivos móviles */
+      }
+    
+      .inner-card {
+        margin-bottom: 20px; /* Reduce el espacio entre elementos */
+      }
+    
+      .score {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+      }
+    
+      .date-detail {
+        margin-left: 10px; /* Reduce el margen izquierdo */
+        font-size: 14px; /* Reduce el tamaño del texto */
+      }
+    
+      .movie-poster {
+        width: 100%; /* Ocupa el ancho completo del contenedor padre */
+        height: auto; /* Se ajusta automáticamente a la relación de aspecto original */
+      }
+    
+      .overview-title {
+        font-size: 24px; /* Reduce el tamaño del título de descripción */
+      }
+    
+      .overview {
+        font-size: 16px; /* Reduce el tamaño del texto de descripción */
+      }
+    }
+  
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+    }

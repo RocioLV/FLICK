@@ -2,10 +2,10 @@ import React from "react";
 import "../../styles/App.css";
 import "./Home.css";
 import "../Header/header.css";
-import Header from "./Header.tsx";
-import Movies from "../Movies/Movies.tsx";
-import posterHome from "../../assets/poster-home.png";
-import { useFilterSort } from "../Movies/FilterSortContext.tsx";
+import Header from "../Header/Header.tsx";
+import MovieList from "../MovieList/MovieList";
+import posterHome from "../../assets/background3.png";
+import { useFilterSort } from "../FilterAndSort/FilterSortContext.tsx";
 
 const Home: React.FC = () => {
   // Extraemos las propiedades del hook useFilterSort.
@@ -32,15 +32,10 @@ const Home: React.FC = () => {
 
       <section className="poster-container">
         <img src={posterHome} className="posterHome" alt="poster" />
-        <section className="title-container">
-          <h1 className="poster-title">
-            Uncover Reality, One Film at a Time...
-          </h1>
-        </section>
       </section>
 
       <section>
-        <Movies filterByValue={filterByValue} sortByValue={sortByValue} />
+        <MovieList filterByValue={filterByValue} sortByValue={sortByValue} />
       </section>
     </>
   );
