@@ -2,7 +2,7 @@
 
 import { Movie } from './movieTypes'; 
 
-const apiKey = 'cf0e1952324b9e21971b9172680a665f';
+const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
 export const fetchMovies = async (page: number, sortBy: string): Promise<Movie[]> => {
   try {

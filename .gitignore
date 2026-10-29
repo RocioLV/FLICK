@@ -25,3 +25,7 @@ dist-ssr
 
 # Test coverage reports
 coverage/
+
+.env
+.env.local
+.env.*.local
