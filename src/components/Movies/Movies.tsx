@@ -1,9 +1,10 @@
-
 import { useEffect, useState } from "react";
 import "./Movies.css";
+
 import { useFilterSort } from "./useFilterSort";
 import MovieModal from "./MovieModal";
 
+// Datos básicos de una película
 interface Movie {
   id: number;
   poster_path: string | null;
@@ -11,6 +12,7 @@ interface Movie {
   release_date: string;
 }
 
+// Respuesta de TMDB
 interface MoviesResponse {
   results: Movie[];
   page: number;
@@ -18,8 +20,10 @@ interface MoviesResponse {
   total_results: number;
 }
 
+// Propiedades recibidas desde App.tsx
 interface MoviesProps {
   page: number;
+  searchQuery: string;
   onTotalPagesChange: (totalPages: number) => void;
 }
 
@@ -28,13 +32,14 @@ const IMAGE_URL = "https://image.tmdb.org/t/p/w342";
 
 export default function Movies({
   page,
+  searchQuery,
   onTotalPagesChange,
 }: MoviesProps) {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Película seleccionada para mostrar en el modal
+  // Película seleccionada para abrir el modal
   const [selectedMovieId, setSelectedMovieId] =
     useState<number | null>(null);
 
@@ -45,7 +50,7 @@ export default function Movies({
   useEffect(() => {
     const controller = new AbortController();
 
-    const fetchMovies = async () => {
+    async function fetchMovies() {
       setLoading(true);
       setError(null);
       setMovies([]);
@@ -56,19 +61,31 @@ export default function Movies({
           throw new Error("TMDB API key is not configured.");
         }
 
+        const isSearching = searchQuery.trim().length > 0;
+
         const params = new URLSearchParams({
           api_key: apiKey,
           page: String(page),
-          sort_by: sortByValue,
           language: "en-US",
         });
 
-        if (filterByValue) {
-          params.set("with_genres", filterByValue);
+        let endpoint = "/discover/movie";
+
+        if (isSearching) {
+          // Buscar películas por título
+          endpoint = "/search/movie";
+          params.set("query", searchQuery.trim());
+        } else {
+          // Explorar películas con filtros y ordenamiento
+          params.set("sort_by", sortByValue);
+
+          if (filterByValue) {
+            params.set("with_genres", filterByValue);
+          }
         }
 
         const response = await fetch(
-          `${API_URL}/discover/movie?${params.toString()}`,
+          `${API_URL}${endpoint}?${params.toString()}`,
           { signal: controller.signal }
         );
 
@@ -80,6 +97,7 @@ export default function Movies({
 
         const data: MoviesResponse = await response.json();
 
+        // Evitar actualizar el estado si la solicitud fue cancelada
         if (controller.signal.aborted) return;
 
         setMovies(data.results);
@@ -97,13 +115,16 @@ export default function Movies({
           setLoading(false);
         }
       }
-    };
+    }
 
     fetchMovies();
 
-    return () => controller.abort();
+    return () => {
+      controller.abort();
+    };
   }, [
     page,
+    searchQuery,
     filterByValue,
     sortByValue,
     apiKey,
@@ -126,13 +147,20 @@ export default function Movies({
         )}
 
         {!loading && !error && movies.length === 0 && (
-          <p>No movies found for the selected filters.</p>
+          <p>
+            {searchQuery
+              ? `No movies found for "${searchQuery}".`
+              : "No movies found for the selected filters."}
+          </p>
         )}
 
         {!loading && !error && movies.length > 0 && (
           <div className="movie-grid">
             {movies.map((movie) => (
-              <article key={movie.id} className="movie-item">
+              <article
+                key={movie.id}
+                className="movie-item"
+              >
                 <button
                   type="button"
                   className="movie-card-button"

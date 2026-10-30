@@ -260,3 +260,142 @@ button {
     transform: none;
   }
 }
+
+/* Unified catalog background */
+
+#movie-catalog {
+  background-color: #111113;
+}
+
+#movie-catalog .movies-container,
+#movie-catalog .movie-grid,
+#movie-catalog .movie-item,
+#movie-catalog .movie-card-button {
+  background-color: transparent;
+}
+
+#movie-catalog .movie-item {
+  box-shadow: none;
+  border: none;
+}
+
+/* Filters */
+
+.flick-filters {
+  background-color: #111113;
+  border-bottom: 1px solid #29292d;
+}
+
+.flick-filters .form-select {
+  background-color: #252528;
+  color: #f5f5f5;
+  border: 1px solid #404045;
+  border-radius: 6px;
+}
+
+.flick-filters .form-select:focus {
+  border-color: #f16b70;
+  box-shadow: 0 0 0 2px rgba(241, 107, 112, 0.2);
+}
+
+
+/* FLICK pagination */
+
+#movie-catalog .pagination-container {
+  display: flex;
+  justify-content: center;
+  padding: 36px 16px 48px;
+  background: #111113;
+}
+
+#movie-catalog .pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 0;
+}
+
+#movie-catalog .page-link {
+  display: grid;
+  place-items: center;
+  min-width: 38px;
+  min-height: 38px;
+  border: 1px solid #353539;
+  border-radius: 6px;
+  background: #202023;
+  color: #e7e7ea;
+  font-size: 0.9rem;
+}
+
+#movie-catalog .page-link:hover {
+  background: #303034;
+  border-color: #f16b70;
+  color: #fff;
+}
+
+#movie-catalog .page-item.active .page-link {
+  background: #f16b70;
+  border-color: #f16b70;
+  color: #111113;
+  font-weight: 700;
+}
+
+#movie-catalog .page-item.disabled .page-link {
+  background: #171719;
+  border-color: #29292d;
+  color: #66666c;
+}
+
+#movie-catalog .page-link:focus-visible {
+  outline: 2px solid #f16b70;
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+
+/* Compact horizontal filters */
+
+.flick-filters {
+  padding-top: 12px !important;
+  padding-bottom: 20px !important;
+}
+
+.flick-filters .d-flex {
+  align-items: center;
+  gap: 24px !important;
+}
+
+.flick-filters .d-flex > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flick-filters label {
+  display: inline-block !important;
+  margin: 0 !important;
+  color: #a6a6ac !important;
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.flick-filters .form-select {
+  width: auto;
+  min-width: 145px;
+  min-height: 36px;
+  padding: 7px 32px 7px 12px;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 560px) {
+  .flick-filters .d-flex {
+    gap: 12px !important;
+  }
+
+  .flick-filters .form-select {
+    min-width: 120px;
+    max-width: 160px;
+  }
+}

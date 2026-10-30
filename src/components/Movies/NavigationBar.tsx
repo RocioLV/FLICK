@@ -35,7 +35,7 @@ export default function NavigationBar() {
   } = useFilterSort();
 
   return (
-    <nav className="navbar bg-dark px-4 py-3">
+    <nav className="flick-filters px-4 py-3">
       <div className="d-flex flex-wrap gap-3">
 
         <div>

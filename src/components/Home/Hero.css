@@ -27,7 +27,7 @@
 .flick-hero h1 {
   max-width: 850px;
   margin-bottom: 24px;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
   line-height: 1.08;
   font-weight: 750;
   letter-spacing: -0.055em;
@@ -64,4 +64,23 @@
   .flick-hero {
     padding: 64px 20px;
   }
+}
+
+/* Compact movie catalog */
+
+@media (min-width: 1101px) {
+  .movies-container .movie-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 28px 18px;
+  }
+}
+
+.movies-container .movie-card-button h2 {
+  font-size: 0.9rem;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.movies-container .movie-card-button p {
+  font-size: 0.8rem;
 }
