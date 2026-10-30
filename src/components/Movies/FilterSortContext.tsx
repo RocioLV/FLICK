@@ -1,33 +1,28 @@
-import React, { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
+import { useState } from "react";
+import type { ReactNode } from "react";
+import { FilterSortContext } from "./filterSortStore";
 
-type FilterSortContextType = {
-  filterByValue: string;
-  setFilterByValue: Dispatch<SetStateAction<string>>;
-  sortByValue: string;
-  setSortByValue: Dispatch<SetStateAction<string>>;
-};
-
-const FilterSortContext = createContext<FilterSortContextType | null>(null);
-
-export const useFilterSort = () => {
-  const context = useContext(FilterSortContext);
-  if (!context) {
-    throw new Error('useFilterSort must be used within a FilterSortProvider');
-  }
-  return context;
-};
-
-type FilterSortProviderProps = {
+interface FilterSortProviderProps {
   children: ReactNode;
-};
+}
 
-export const FilterSortProvider: React.FC<FilterSortProviderProps> = ({ children }) => {
-  const [filterByValue, setFilterByValue] = useState<string>('');
-  const [sortByValue, setSortByValue] = useState<string>('popularity.desc');
+export function FilterSortProvider({
+  children,
+}: FilterSortProviderProps) {
+  const [filterByValue, setFilterByValue] = useState("");
+  const [sortByValue, setSortByValue] =
+    useState("popularity.desc");
 
   return (
-    <FilterSortContext.Provider value={{ filterByValue, setFilterByValue, sortByValue, setSortByValue }}>
+    <FilterSortContext.Provider
+      value={{
+        filterByValue,
+        setFilterByValue,
+        sortByValue,
+        setSortByValue,
+      }}
+    >
       {children}
     </FilterSortContext.Provider>
   );
-};
+}

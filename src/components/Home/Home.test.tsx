@@ -6,9 +6,14 @@ import Home from "./Welcome";
 describe("Home", () => {
   it("renders the welcome message and navigation button", () => {
     render(
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>
+      <MemoryRouter
+        future={{
+          v7_startTransition: true,
+        v7_relativeSplatPath: true,
+    }}
+>
+  <Home />
+</MemoryRouter>
     );
 
     expect(

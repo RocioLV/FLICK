@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 
 import Header from "./components/Home/Header";
@@ -6,11 +5,8 @@ import NavigationBar from "./components/Movies/NavigationBar";
 import Movies from "./components/Movies/Movies";
 import Footer from "./components/Home/Footer";
 import PaginationComponent from "./components/Movies/Pagination";
-
-import {
-  FilterSortProvider,
-  useFilterSort,
-} from "./components/Movies/FilterSortContext";
+import { FilterSortProvider } from "./components/Movies/FilterSortProvider";
+import { useFilterSort } from "./components/Movies/useFilterSort";
 
 // Catálogo principal de películas
 function MovieCatalog() {

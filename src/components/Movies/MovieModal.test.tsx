@@ -140,4 +140,33 @@ describe("MovieModal", () => {
 
   expect(onClose).toHaveBeenCalledTimes(1);
   });
+
+it("restores focus when the modal is unmounted", async () => {
+  const trigger = document.createElement("button");
+  trigger.textContent = "Open movie";
+  document.body.appendChild(trigger);
+  trigger.focus();
+
+  try {
+    const { unmount } = render(
+      <MovieModal movieId={123} onClose={onClose} />
+    );
+
+    await screen.findByRole("heading", {
+      name: "Test Movie",
+    });
+
+    expect(
+      screen.getByRole("button", {
+        name: "Close movie details",
+      })
+    ).toHaveFocus();
+
+    unmount();
+
+    expect(trigger).toHaveFocus();
+    } finally {
+    trigger.remove();
+    }
+    });
 });

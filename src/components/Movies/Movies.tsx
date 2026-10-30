@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import "./Movies.css";
-import { useFilterSort } from "./FilterSortContext";
+import { useFilterSort } from "./useFilterSort";
 import MovieModal from "./MovieModal";
 
 interface Movie {

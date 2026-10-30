@@ -1,5 +1,5 @@
 
-import { useFilterSort } from "./FilterSortContext";
+import { useFilterSort } from "./useFilterSort";
 
 const genres = [
   { id: "", name: "All genres" },
