@@ -1,0 +1,68 @@
+.flick-header {
+  width: 100%;
+  background: #111113;
+  border-bottom: 1px solid #29292d;
+}
+
+.flick-header-content {
+  width: min(100% - 40px, 1200px);
+  min-height: 76px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.flick-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.flick-brand-logo {
+  display: block;
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+}
+
+.flick-nav-link {
+  color: #e7e7ea;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.flick-nav-link:hover {
+  color: #f16b70;
+}
+
+.flick-nav-link:focus-visible,
+.flick-brand:focus-visible {
+  outline: 2px solid #f16b70;
+  outline-offset: 5px;
+  border-radius: 3px;
+}
+
+@media (max-width: 600px) {
+  .flick-header-content {
+    width: min(100% - 32px, 1200px);
+    min-height: 68px;
+  }
+
+  .flick-brand-logo {
+    width: 125px;
+  }
+
+  .flick-nav-link {
+    font-size: 0.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flick-nav-link {
+    transition: none;
+  }
+}

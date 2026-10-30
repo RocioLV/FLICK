@@ -1,27 +1,29 @@
+
 import { useEffect, useState } from "react";
 
 import Header from "./components/Home/Header";
+import Hero from "./components/Home/Hero";
+import Footer from "./components/Home/Footer";
+
 import NavigationBar from "./components/Movies/NavigationBar";
 import Movies from "./components/Movies/Movies";
-import Footer from "./components/Home/Footer";
 import PaginationComponent from "./components/Movies/Pagination";
+
 import { FilterSortProvider } from "./components/Movies/FilterSortProvider";
 import { useFilterSort } from "./components/Movies/useFilterSort";
 
-// Catálogo principal de películas
 function MovieCatalog() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
   const { filterByValue, sortByValue } = useFilterSort();
 
-  // Reiniciar la paginación cuando cambian los filtros
+  // Volver a la primera página al cambiar filtros
   useEffect(() => {
     setCurrentPage(1);
     setTotalPages(0);
   }, [filterByValue, sortByValue]);
 
-  // Cambiar de página únicamente dentro del rango válido
   const handlePageChange = (page: number) => {
     if (page < 1 || page > totalPages) return;
 
@@ -33,20 +35,24 @@ function MovieCatalog() {
       <Header />
 
       <main>
-        <NavigationBar />
+        <Hero />
 
-        <Movies
-          page={currentPage}
-          onTotalPagesChange={setTotalPages}
-        />
+        <section id="movie-catalog">
+          <NavigationBar />
 
-        {totalPages > 1 && (
-          <PaginationComponent
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
+          <Movies
+            page={currentPage}
+            onTotalPagesChange={setTotalPages}
           />
-        )}
+
+          {totalPages > 1 && (
+            <PaginationComponent
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          )}
+        </section>
       </main>
 
       <Footer />
@@ -54,7 +60,6 @@ function MovieCatalog() {
   );
 }
 
-// Proveedor del contexto compartido
 export default function App() {
   return (
     <FilterSortProvider>
