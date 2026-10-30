@@ -1,0 +1,138 @@
+
+.movie-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.movie-modal {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 40px;
+  background: #171717;
+  color: #f5f5f5;
+  border: 1px solid #383838;
+  border-radius: 14px;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5);
+}
+
+.movie-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  z-index: 2;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.movie-modal-close:focus-visible {
+  outline: 2px solid #ff6262;
+  outline-offset: 4px;
+}
+
+.movie-modal-content {
+  display: grid;
+  grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+  gap: 36px;
+  align-items: start;
+}
+
+.movie-modal-poster img {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.movie-modal-placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 2 / 3;
+  background: #303030;
+  border-radius: 8px;
+  color: #ccc;
+}
+
+.movie-modal-info h2 {
+  margin: 0 35px 12px 0;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+}
+
+.movie-modal-info h3 {
+  margin: 25px 0 10px;
+  font-size: 1.2rem;
+}
+
+.movie-modal-info p {
+  line-height: 1.7;
+}
+
+.movie-modal-tagline {
+  color: #aaa;
+  font-style: italic;
+}
+
+.movie-modal-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 20px 0;
+  font-size: 0.95rem;
+  color: #ddd;
+}
+
+.movie-modal-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.movie-modal-genres span {
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: #333;
+  font-size: 0.85rem;
+}
+
+.movie-modal-votes {
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+.movie-modal-message {
+  padding: 40px 12px;
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  .movie-modal-overlay {
+    padding: 12px;
+  }
+
+  .movie-modal {
+    max-height: 95vh;
+    padding: 45px 20px 24px;
+  }
+
+  .movie-modal-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .movie-modal-poster {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}

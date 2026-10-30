@@ -1,29 +1,29 @@
-// Header.tsx
-import React from 'react';
-import './Home.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const Header: React.FC = () => {
+import flickLogo from "../../assets/flick-logo-header.png";
+import "./Header.css";
+
+export default function Header() {
   return (
-    <header className="header">
-      {/* <div className="header-left">
-        <FontAwesomeIcon icon={faBars} className="menu-icon" />
-      </div> */}
-      <div className="header-center">
-        <img src="src/assets/FLICKthis.gif" alt="Logo" className="logo-h" />
-      </div>
-      <div className="header-right">
-        <div className='menu-item'></div>
-          <li className='menu-item'>Movies</li>
-          <li className='menu-item'>TV Show</li>
-        <div className="search-container">
-          <FontAwesomeIcon icon={faSearch} className="search-icon" />
-          <input type="text" placeholder="Search..." className="search-input" />
-        </div>
+    <header className="flick-header">
+      <div className="flick-header-content">
+        <a
+          href="/"
+          className="flick-brand"
+          aria-label="FLICK — Home"
+        >
+          <img
+            src={flickLogo}
+            alt="FLICK"
+            className="flick-brand-logo"
+          />
+        </a>
+
+        <nav aria-label="Main navigation">
+          <a href="#movie-catalog" className="flick-nav-link">
+            Explore movies
+          </a>
+        </nav>
       </div>
     </header>
   );
-};
-
-export default Header;
+}
