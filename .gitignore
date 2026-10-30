@@ -29,3 +29,8 @@ coverage/
 .env
 .env.local
 .env.*.local
+.vercel
+.env*
+
+# Temporary Vite files
+vite.config.*.timestamp-*.mjs
