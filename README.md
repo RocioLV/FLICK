@@ -10,6 +10,10 @@ The project was originally developed as a frontend learning challenge and later 
 
 **[Explore FLICK](https://flick-six-zeta.vercel.app/)**
 
+## Preview
+
+![FLICK movie discovery application](docs/images/flick-preview.png)
+
 ### Features
 
 - **Movie discovery:** Browse movies retrieved from TMDB.
